@@ -23,8 +23,7 @@ chars = ['\t', '\n', ' ', '!', '"', '#', '$', '&', "'", '(', ')', '*', ',', '-',
 char_indices = dict((c, i) for i, c in enumerate(chars))
 indices_char = dict((i, c) for i, c in enumerate(chars))
 
-maxlen = 40
-model = keras.models.load_model("model_20.h5")
+
 
 def sample(preds, temperature=1.0):
     # helper function to sample an index from a probability array
@@ -53,6 +52,9 @@ def generateResponse(initial_phrase):
     # phrase and phrase preperation
     if len(initial_phrase) < 39   : initial_phrase = "%s%s " % (" " * (40 - len(initial_phrase) - 1), initial_phrase)
     elif len(initial_phrase) > 39 : initial_phrase = "%s " % (initial_phrase[-39:])
+    
+    maxlen = 40
+    model = keras.models.load_model("model_20.h5")
     
     # diversity picking
     diversities = [0.2, 0.3, 0.5]
