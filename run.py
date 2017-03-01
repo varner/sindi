@@ -46,7 +46,6 @@ def sms():
     message_body = request.form['Body']
  
     resp = twilio.twiml.Response()
-    print unicodedata.normalize('NFKD', message_body).encode('ascii','ignore')
     resp.message(generateResponse(unicodedata.normalize('NFKD', message_body).encode('ascii','ignore')))
     return str(resp)
 
@@ -62,6 +61,7 @@ def generateResponse(initial_phrase):
     # preparing generated and setence stuff
     generated = ''
     sentence = initial_phrase
+    print sentence
     
     for i in range(80):
         x = np.zeros((1, maxlen, len(chars)))
