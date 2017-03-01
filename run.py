@@ -44,7 +44,7 @@ def hello():
 def sms():
     message_body = request.form['Body']
  
-    resp = twiml.Response()
+    resp = twilio.twiml.Response()
     resp.message(generateResponse(initial_phrase))
     return str(resp)
 
