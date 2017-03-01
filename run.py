@@ -7,6 +7,7 @@ from keras.layers import LSTM
 from keras.optimizers import RMSprop
 from keras.utils.data_utils import get_file
 import numpy as np
+import unicodedata
 import random
 import sys
 import re
@@ -45,7 +46,7 @@ def sms():
     message_body = request.form['Body']
  
     resp = twilio.twiml.Response()
-    resp.message(generateResponse(message_body))
+    resp.message(generateResponse(unicodedata.normalize('NFKD', message_body).encode('ascii','ignore')))
     return str(resp)
 
 def generateResponse(initial_phrase):    
