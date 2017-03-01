@@ -45,7 +45,7 @@ def sms():
     message_body = request.form['Body']
  
     resp = twilio.twiml.Response()
-    resp.message(generateResponse(initial_phrase))
+    resp.message(generateResponse(message_body))
     return str(resp)
 
 def generateResponse(initial_phrase):    
