@@ -85,7 +85,12 @@ def generateResponse(initial_phrase):
     if periods is not -1: period = generated[:periods]
     
     #take the minimum of that
-    return unicodedata.normalize('NFKD', min([comma, and_, period, generated], key=len)).encode('ascii','ignore')
+    phrase = min([comma, and_, period, generated], key=len)
+    response = ""
+    for c in phrase:
+        if (ord(c) <= 128):
+            response += c
+    return response
 
 if __name__ == '__main__':
     app.debug = True
