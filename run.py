@@ -35,6 +35,10 @@ def sample(preds, temperature=1.0):
 
 app = Flask(__name__)
 
+@app.route('/')
+def hello():
+    return "i hope this works"
+
 @app.route('/sms', methods=['POST'])
 def sms():
     message_body = request.form['Body']
