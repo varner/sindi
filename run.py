@@ -46,6 +46,7 @@ def sms():
     message_body = request.form['Body']
  
     resp = twilio.twiml.Response()
+    print unicodedata.normalize('NFKD', message_body).encode('ascii','ignore')
     resp.message(generateResponse(unicodedata.normalize('NFKD', message_body).encode('ascii','ignore')))
     return str(resp)
 
