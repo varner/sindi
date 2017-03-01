@@ -10,6 +10,7 @@ import numpy as np
 import random
 import sys
 import re
+import os
 
 # preload chars
 chars = ['\t', '\n', ' ', '!', '"', '#', '$', '&', "'", '(', ')', '*', ',', '-', 
