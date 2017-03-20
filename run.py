@@ -41,7 +41,7 @@ def hello():
     return "i hope this works"
 
 @app.route('/emergency', methods=['POST'])
-def sms():
+def emergency():
     canned_phrases = [
         "ok whatever",
         "dont talk to me right now",
