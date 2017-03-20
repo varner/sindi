@@ -40,6 +40,39 @@ app = Flask(__name__)
 def hello():
     return "i hope this works"
 
+@app.route('/emergency', methods=['POST'])
+def sms():
+    canned_phrases = [
+        "ok whatever",
+        "dont talk to me right now",
+        'just give me a minute ok',
+        'dont talk to me rn',
+        'im busy',
+        'gimme a minute',
+        'uhhh',
+        'uh ok',
+        'uh sure',
+        'im trying to work',
+        'dont bother me rn',
+        'im at work',
+        'i cant talk to u rn',
+        'im busy rn',
+        'sry i cant talk rn',
+        'i have to finish this real quick',
+        'im too tired for this',
+        'not now',
+        'im too busy for this',
+        'dont talk to me right now',
+        'uhh please stop',
+        'too busy hmu later sorry',
+        'i need to focus rn cant talk',
+        'im literally so tired please just let me sleep'
+    ]
+    generated_number = random.randint(0, len(canned_phrases))
+    resp = twiml.Response()
+    resp.message(canned_phrases[generated_number])
+    return str(resp)
+
 @app.route('/sms', methods=['POST'])
 def sms():
     message_body = request.form['Body']
